@@ -23,6 +23,7 @@ defmodule BreweryWeb do
 
       import Plug.Conn
       import BreweryWeb.Gettext
+      import Phoenix.LiveView.Controller
       alias BreweryWeb.Router.Helpers, as: Routes
     end
   end
@@ -41,6 +42,7 @@ defmodule BreweryWeb do
 
       import BreweryWeb.ErrorHelpers
       import BreweryWeb.Gettext
+      import Phoenix.LiveView.Helpers
       alias BreweryWeb.Router.Helpers, as: Routes
     end
   end
@@ -50,6 +52,7 @@ defmodule BreweryWeb do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+      import Phoenix.LiveView.Router
     end
   end
 

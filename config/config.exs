@@ -15,7 +15,8 @@ config :brewery, BreweryWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "tpgO9pKRzAf6WLVBoUd1dX2AuoXLBeA4ydBMm4GhK3g937BnJ2xhcR28ExfSIgiP",
   render_errors: [view: BreweryWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Brewery.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Brewery.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [signing_salt: "r8Usdz9Q7CwKawOmZzqUoxkkaiNhWIPT"]
 
 # Configures Elixir's Logger
 config :logger, :console,
