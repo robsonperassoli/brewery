@@ -19,6 +19,7 @@ defmodule BreweryWeb.Router do
 
     get "/", PageController, :index
     live "/test", TestLive
+    live "/calculator/priming", CalculatorLive.Priming
   end
 
   # Other scopes may use custom stacks.

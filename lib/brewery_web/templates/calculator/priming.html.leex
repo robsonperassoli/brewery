@@ -1,0 +1,29 @@
+<%= f = form_for @changeset, "#", [phx_change: :validate, phx_submit: :save, as: "priming"] %>
+    <%= label f, :num_of_bottles %>
+    <%= text_input f, :num_of_bottles %>
+    <%= error_tag f, :num_of_bottles %>
+
+    <%= label f, :grams_per_liter %>
+    <%= text_input f, :grams_per_liter %>
+    <%= error_tag f, :grams_per_liter %>
+
+    <%= label f, :bottle_size %>
+    <%= text_input f, :bottle_size %>
+    <%= error_tag f, :bottle_size %>
+</form>
+
+<div>
+    <%= if @results do %>
+        <p>
+            Add <strong><%= @results.total_sugar %></strong> grams of sugar and 
+            complete with water until you have <strong><%= @results.priming_solution %></strong>
+            ml of solution.
+        </p>
+        
+        <p>
+            Pour <strong><%= @results.solution_per_bottle %></strong> ml of solution
+            each bottle, which is a total of <strong><%= @results.sugar_per_bottle %></strong>
+            grams of sugar per bottle.
+        </p>
+    <% end %>
+</div>
