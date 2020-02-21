@@ -13,6 +13,6 @@ defmodule Brewery.Beer.BeerStyle do
   def changeset(beer_style, attrs) do
     beer_style
     |> cast(attrs, [:name, :bjcp_reference])
-    |> validate_required([:name, :bjcp_reference])
+    |> validate_required([:name])
   end
 end

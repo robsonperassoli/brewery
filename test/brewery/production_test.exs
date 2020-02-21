@@ -6,9 +6,9 @@ defmodule Brewery.ProductionTest do
   describe "batches" do
     alias Brewery.Production.Batch
 
-    @valid_attrs %{date: ~D[2010-04-17], final_gravity: 42, notes: "some notes", original_gravity: 42}
-    @update_attrs %{date: ~D[2011-05-18], final_gravity: 43, notes: "some updated notes", original_gravity: 43}
-    @invalid_attrs %{date: nil, final_gravity: nil, notes: nil, original_gravity: nil}
+    @valid_attrs %{date: ~D[2010-04-17], final_gravity: 42, notes: "some notes", original_gravity: 42, style_id: 1}
+    @update_attrs %{date: ~D[2011-05-18], final_gravity: 43, notes: "some updated notes", original_gravity: 43, style_id: 2}
+    @invalid_attrs %{date: nil, final_gravity: nil, notes: nil, original_gravity: nil, style_id: nil}
 
     def batch_fixture(attrs \\ %{}) do
       {:ok, batch} =

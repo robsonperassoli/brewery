@@ -1,0 +1,3 @@
+<%= for item <- @list do %>
+    <p><%= item.name %> <%= if item.bjcp_reference, do: " - #{item.bjcp_reference}"  %></p>
+<% end %>

@@ -1,0 +1,11 @@
+<%= f = form_for @changeset, "#", [phx_change: :validate, phx_submit: :save] %>
+    <%= label f, :name %>
+    <%= text_input f, :name %>
+    <%= error_tag f, :name %>
+
+    <%= label f, :bjcp_reference %>
+    <%= text_input f, :bjcp_reference %>
+    <%= error_tag f, :bjcp_reference %>
+
+    <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>

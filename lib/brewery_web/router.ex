@@ -20,6 +20,10 @@ defmodule BreweryWeb.Router do
     get "/", PageController, :index
     live "/test", TestLive
     live "/calculator/priming", CalculatorLive.Priming
+    live "/styles", StylesLive.List
+    live "/styles/new", StylesLive.New
+    live "/styles/:id", StylesLive.Show
+    live "/styles/:id/edit", StylesLive.Edit
   end
 
   # Other scopes may use custom stacks.
