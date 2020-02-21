@@ -1,11 +1,15 @@
 <%= f = form_for @changeset, "#", [phx_change: :validate, phx_submit: :save] %>
-    <%= label f, :name %>
-    <%= text_input f, :name %>
+  <div class="mb-4">
+    <%= label f, :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= text_input f, :name, class: "block appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
     <%= error_tag f, :name %>
-
-    <%= label f, :bjcp_reference %>
-    <%= text_input f, :bjcp_reference %>
+  </div>
+    
+  <div class="mb-4">
+    <%= label f, :bjcp_reference, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= text_input f, :bjcp_reference, class: "block appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
     <%= error_tag f, :bjcp_reference %>
+  </div>
 
-    <%= submit "Save", phx_disable_with: "Saving..." %>
+  <%= submit "Save", phx_disable_with: "Saving...", class: "bg-yellow-500 hover:bg-yellow-700 text-yellow-900 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
 </form>

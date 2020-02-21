@@ -1,3 +1,22 @@
-<%= for item <- @list do %>
-    <p><%= item.name %> <%= if item.bjcp_reference, do: " - #{item.bjcp_reference}"  %></p>
-<% end %>
+<table class="table-auto">
+  <thead>
+    <tr>
+      <th class="px-3 py-1">Name</th>
+      <th class="px-3 py-1">BJCP Ref.</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= for item <- @list do %>
+    <tr>
+      <td class="border px-3 py-1"><%= item.name %></td>
+      <td class="border px-3 py-1"><%= item.bjcp_reference %></td>
+      <td class="border px-3 py-1">
+        <%= link "View", to: Routes.live_path(@socket, BreweryWeb.StylesLive.Show, item.id), class: "underline" %>
+        <%= link "Edit", to: Routes.live_path(@socket, BreweryWeb.StylesLive.Edit, item.id), class: "underline m-2" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link "New", to: Routes.live_path(@socket, BreweryWeb.StylesLive.New), class: "inline-block my-2 underline" %>
