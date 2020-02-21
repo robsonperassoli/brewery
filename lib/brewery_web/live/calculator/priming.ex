@@ -21,7 +21,7 @@ defmodule BreweryWeb.CalculatorLive.Priming do
 
   def render(assigns), do: CalculatorView.render("priming.html", assigns)
 
-  def handle_event("validate", %{"priming" => params}, socket) do
+  def handle_event("calculate", %{"priming" => params}, socket) do
     changeset = Form.change_priming(params)
     |> Map.put(:action, :insert)
 

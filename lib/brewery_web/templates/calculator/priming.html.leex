@@ -1,4 +1,4 @@
-<%= f = form_for @changeset, "#", [phx_change: :validate, phx_submit: :save, as: "priming"] %>
+<%= f = form_for @changeset, "#", [phx_change: :calculate, phx_submit: :save, as: "priming"] %>
     <%= label f, :num_of_bottles %>
     <%= text_input f, :num_of_bottles %>
     <%= error_tag f, :num_of_bottles %>
