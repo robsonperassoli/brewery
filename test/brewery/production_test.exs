@@ -67,4 +67,67 @@ defmodule Brewery.ProductionTest do
       assert %Ecto.Changeset{} = Production.change_batch(batch)
     end
   end
+
+  describe "production_step" do
+    alias Brewery.Production.Step
+
+    @valid_attrs %{date: ~D[2010-04-17], notes: "some notes", type: "some type"}
+    @update_attrs %{date: ~D[2011-05-18], notes: "some updated notes", type: "some updated type"}
+    @invalid_attrs %{date: nil, notes: nil, type: nil}
+
+    def step_fixture(attrs \\ %{}) do
+      {:ok, step} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Production.create_step()
+
+      step
+    end
+
+    test "list_production_step/0 returns all production_step" do
+      step = step_fixture()
+      assert Production.list_production_step() == [step]
+    end
+
+    test "get_step!/1 returns the step with given id" do
+      step = step_fixture()
+      assert Production.get_step!(step.id) == step
+    end
+
+    test "create_step/1 with valid data creates a step" do
+      assert {:ok, %Step{} = step} = Production.create_step(@valid_attrs)
+      assert step.date == ~D[2010-04-17]
+      assert step.notes == "some notes"
+      assert step.type == "some type"
+    end
+
+    test "create_step/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Production.create_step(@invalid_attrs)
+    end
+
+    test "update_step/2 with valid data updates the step" do
+      step = step_fixture()
+      assert {:ok, %Step{} = step} = Production.update_step(step, @update_attrs)
+      assert step.date == ~D[2011-05-18]
+      assert step.notes == "some updated notes"
+      assert step.type == "some updated type"
+    end
+
+    test "update_step/2 with invalid data returns error changeset" do
+      step = step_fixture()
+      assert {:error, %Ecto.Changeset{}} = Production.update_step(step, @invalid_attrs)
+      assert step == Production.get_step!(step.id)
+    end
+
+    test "delete_step/1 deletes the step" do
+      step = step_fixture()
+      assert {:ok, %Step{}} = Production.delete_step(step)
+      assert_raise Ecto.NoResultsError, fn -> Production.get_step!(step.id) end
+    end
+
+    test "change_step/1 returns a step changeset" do
+      step = step_fixture()
+      assert %Ecto.Changeset{} = Production.change_step(step)
+    end
+  end
 end
