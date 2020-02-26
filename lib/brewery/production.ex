@@ -35,7 +35,11 @@ defmodule Brewery.Production do
       ** (Ecto.NoResultsError)
 
   """
-  def get_batch!(id), do: Repo.get!(Batch, id)
+  def get_batch!(id) do
+    Batch
+    |> preload(:style)
+    |> Repo.get!(id)
+  end
 
   @doc """
   Creates a batch.
