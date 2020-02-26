@@ -7,6 +7,7 @@ defmodule Brewery.Production do
   alias Brewery.Repo
 
   alias Brewery.Production.Batch
+  alias Brewery.Beer.BeerStyle
 
   @doc """
   Returns the list of batches.
@@ -36,9 +37,11 @@ defmodule Brewery.Production do
 
   """
   def get_batch!(id) do
-    Batch
-    |> preload(:style)
-    |> Repo.get!(id)
+    query = from b in Batch,
+      join: s in assoc(b, :style),
+      preload: [style: s]
+
+    Repo.get!(query, id)
   end
 
   @doc """
