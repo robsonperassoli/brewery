@@ -18,6 +18,6 @@ defmodule Brewery.Production.Step do
     step
     |> cast(attrs, [:type, :notes, :date, :batch_id])
     |> validate_required([:type, :notes, :date, :batch_id])
-    |> validate_subset(:type, ["fermentation_start", "dry_hopping", "bottling", "maturation_start"])
+    |> validate_inclusion(:type, ["fermentation_start", "dry_hopping", "bottling", "maturation_start"])
   end
 end

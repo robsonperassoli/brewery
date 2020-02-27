@@ -28,6 +28,7 @@ defmodule BreweryWeb.Router do
     live "/batches", BatchesLive.List
     live "/batches/:id", BatchesLive.Show
     live "/batches/:id/edit", BatchesLive.Edit
+    live "/batches/:id/steps", BatchesLive.Steps
   end
 
   # Other scopes may use custom stacks.

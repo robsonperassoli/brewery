@@ -120,8 +120,11 @@ defmodule Brewery.Production do
       [%Step{}, ...]
 
   """
-  def list_production_step do
-    Repo.all(Step)
+  def list_production_step(batch_id) do
+    query = from s in Step,
+      where: s.batch_id == ^batch_id
+
+    Repo.all(query)
   end
 
   @doc """
