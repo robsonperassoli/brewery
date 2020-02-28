@@ -122,7 +122,8 @@ defmodule Brewery.Production do
   """
   def list_production_step(batch_id) do
     query = from s in Step,
-      where: s.batch_id == ^batch_id
+      where: s.batch_id == ^batch_id,
+      order_by: [asc: :date]
 
     Repo.all(query)
   end

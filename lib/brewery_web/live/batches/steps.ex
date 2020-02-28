@@ -30,6 +30,16 @@ defmodule BreweryWeb.BatchesLive.Steps do
     end
   end
 
+  def handle_event("delete", %{"step-id" => step_id}, socket) do
+    step = Production.get_step!(step_id)
+    case Production.delete_step(step) do
+      {:ok, _} ->
+        {:noreply, assign(socket, steps: fetch_steps(socket.assigns.batch))}
+      {:error, _} ->
+        {:noreply, put_flash(socket, :error, "Error removing the step!")}
+    end
+  end
+
   def create_changeset(), do: Production.change_step(%Step{})
 
   def fetch_steps(%Batch{id: batch_id}) do

@@ -1,25 +1,41 @@
-<%= for step <- @steps do %>
-  <div>
-    <%= step.date %> <%= step.type %> <%= step.notes %>
-  </div>
-<% end %>
-
 <%= f = form_for @changeset, "#", [phx_change: :validate, phx_submit: :save] %>
   <%= hidden_input f, :batch_id, value: @batch.id %>
 
-  <%= label f, :date %>
-  <%= text_input f, :date, type: :date %>
-  <%= error_tag f, :date %>
+  <div class="flex">
+    <div>
+      <%= label f, :date, class: "text-gray-700 text-sm font-bold mb-2 mr-2" %>
+      <%= text_input f, :date, type: :date, class: "appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+      <%= error_tag f, :date %>
+    </div>
 
-  <%= label f, :type %>
-  <%= select f, :type,
-      ["Fermentation Start": "fermentation_start", "Dry-hopping": "dry_hopping", "Bottling": "bottling", "Maturation Start": "maturation_start"],
-      prompt: "Choose the step" %>
-  <%= error_tag f, :type %>
+    <div class="ml-2">
+      <%= label f, :type, class: "text-gray-700 text-sm font-bold mb-2 mr-2" %>
+      <%= select f, :type,
+          ["Fermentation Start": "fermentation_start", "Dry-hopping": "dry_hopping", "Bottling": "bottling", "Maturation Start": "maturation_start"],
+          prompt: "Choose the step",
+          class: "appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+      <%= error_tag f, :type %>
+    </div>
 
-  <%= label f, :notes %>
-  <%= text_input f, :notes %>
-  <%= error_tag f, :notes %>
+    <div class="ml-2">
+      <%= label f, :notes, class: "text-gray-700 text-sm font-bold mb-2 mr-2" %>
+      <%= text_input f, :notes, class: "appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+      <%= error_tag f, :notes %>
+    </div>
 
-  <%= submit "Add", phx_disable_with: "Saving step..." %>
+    <%= submit "Add", phx_disable_with: "Saving step...", class: "bg-yellow-500 hover:bg-yellow-700 text-yellow-900 px-4 ml-3 rounded focus:outline-none focus:shadow-outline" %>
+  </div>
 </form>
+
+<%= for step <- @steps do %>
+  <div>
+    <%= step.date %> <%= step.type %> <%= step.notes %>
+    <button
+      phx-click="delete"
+      phx-value-step-id="<%= step.id %>"
+      class="bg-red-500 hover:bg-red-700 text-white py-1 px-3 rounded focus:outline-none focus:shadow-outline"
+      >
+        Remove
+    </button>
+  </div>
+<% end %>
