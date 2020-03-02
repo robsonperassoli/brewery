@@ -1,12 +1,21 @@
-<nav class="flex items-center justify-between flex-wrap bg-yellow-300 p-4">
-  <div class="flex items-center flex-shrink-0 text-yellow-900 mr-5">
-    <span class="font-semibold text-xl tracking-tight">Brewery</span>
+<%= #Routes.current_path() %>
+<nav class="navbar">
+  <div class="navbar-brand">
+    <h1 class="subtitle">Brewery</h1>
   </div>
-  <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-    <div class="text-sm lg:flex-grow">
-      <% link_class = "block mt-4 lg:inline-block lg:mt-0 text-yellow-600 hover:text-yellow-500 mr-4" %>
-      <%= link "Batches", to: "/batches", class: link_class %>
-      <%= link "Styles", to: "/styles", class: link_class %>
+
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <%= link "Batches", to: "/batches", class: "navbar-item" %>
+      <%= link "Styles", to: "/styles", class: "navbar-item" %>
+      <div class="navbar-item has-dropdown is-hoverable">
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">Calculators</a>
+        <div class="navbar-dropdown">
+          <%= link "Priming", to: "/calculator/priming", class: "navbar-item" %>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
+

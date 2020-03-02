@@ -1,24 +1,23 @@
-<table class="table-auto">
+<table class="table is-fullwidth is-striped">
   <thead>
     <tr>
-      <th class="px-4 py-2">Style</th>
-      <th class="px-4 py-2">Date</th>
-      <th class="px-4 py-2">OG</th>
-      <th class="px-4 py-2">FG</th>
+      <th>Style</th>
+      <th>Date</th>
+      <th>OG</th>
+      <th>FG</th>
       <th>#</th>
     </tr>
   </thead>
   <tbody>
     <%= for batch <- @list do %>
       <tr>
-        <td class="border px-4 py-2"><%= batch.style.name %></td>
-        <td class="border px-4 py-2"><%= batch.date %></td>
-        <td class="border px-4 py-2"><%= batch.original_gravity %></td>
-        <td class="border px-4 py-2"><%= batch.final_gravity %></td>
-        <td class="border px-4 py-2">
-          <%= link "View", to: Routes.live_path(@socket, BreweryWeb.BatchesLive.Show, batch), class: "underline" %>
-          <%= link "Edit", to: Routes.live_path(@socket, BreweryWeb.BatchesLive.Edit, batch), class: "underline ml-4" %>
-          <%= link "Steps", to: Routes.live_path(@socket, BreweryWeb.BatchesLive.Steps, batch), class: "underline ml-4" %>
+        <td><%= batch.style.name %></td>
+        <td><%= batch.date %></td>
+        <td><%= batch.original_gravity %></td>
+        <td><%= batch.final_gravity %></td>
+        <td>
+          <%= link "Edit", to: Routes.live_path(@socket, BreweryWeb.BatchesLive.Edit, batch) %> | 
+          <%= link "Steps", to: Routes.live_path(@socket, BreweryWeb.BatchesLive.Steps, batch) %>
         </td>
       </tr>
     <% end %>

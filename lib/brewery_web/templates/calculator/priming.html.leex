@@ -1,29 +1,44 @@
-<%= f = form_for @changeset, "#", [phx_change: :calculate, phx_submit: :save, as: "priming"] %>
-    <%= label f, :num_of_bottles %>
-    <%= text_input f, :num_of_bottles %>
-    <%= error_tag f, :num_of_bottles %>
+<%= f = form_for @changeset, "#", [phx_change: :calculate, phx_submit: :save, as: "priming", autocomplete: :off] %>
+  <div class="container is-fluid">
+    <div class="field">
+      <%= label f, :num_of_bottles, class: "label" %>
+      <div class="control">
+        <%= text_input f, :num_of_bottles, type: :number, class: "input" %>
+      </div>
+      <%= error_tag f, :num_of_bottles %>
+    </div>
 
-    <%= label f, :grams_per_liter %>
-    <%= text_input f, :grams_per_liter %>
-    <%= error_tag f, :grams_per_liter %>
+    <div class="field">
+      <%= label f, :grams_per_liter, class: "label" %>
+      <div class="control">
+        <%= text_input f, :grams_per_liter, type: :number, class: "input" %>
+      </div>
+      <%= error_tag f, :grams_per_liter %>
+    </div>
 
-    <%= label f, :bottle_size %>
-    <%= text_input f, :bottle_size %>
-    <%= error_tag f, :bottle_size %>
+    <div class="field">
+      <%= label f, :bottle_size, class: "label" %>
+      <div class="control">
+        <div class="select">
+          <%= select f, :bottle_size, ["600ML": 600, "500ML": 500, "300ML": 300], prompt: "Choose bottle size" %>
+        </div>
+      </div>
+      <%= error_tag f, :bottle_size %>
+    </div>
+
+    <%= if @results do %>
+      <p>
+          Add <strong><%= @results.total_sugar %></strong> grams of sugar and 
+          complete with water until you have <strong><%= @results.priming_solution %></strong>
+          ml of solution.
+      </p>
+
+      <p>
+          Pour <strong><%= @results.solution_per_bottle %></strong> ml of solution
+          each bottle, which is a total of <strong><%= @results.sugar_per_bottle %></strong>
+          grams of sugar per bottle.
+      </p>
+    <% end %>
+  </div>
 </form>
 
-<div>
-    <%= if @results do %>
-        <p>
-            Add <strong><%= @results.total_sugar %></strong> grams of sugar and 
-            complete with water until you have <strong><%= @results.priming_solution %></strong>
-            ml of solution.
-        </p>
-        
-        <p>
-            Pour <strong><%= @results.solution_per_bottle %></strong> ml of solution
-            each bottle, which is a total of <strong><%= @results.sugar_per_bottle %></strong>
-            grams of sugar per bottle.
-        </p>
-    <% end %>
-</div>
