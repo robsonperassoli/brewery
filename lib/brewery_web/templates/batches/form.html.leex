@@ -1,33 +1,50 @@
 <%= f = form_for @changeset, "#", [phx_change: :validate, phx_submit: :save] %>
-  <div class="mb-4">
-    <%= label f, :style, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= select f, :style_id, Enum.map(@styles, &{&1.name, &1.id}), prompt: "Choose the beer style", class: "block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
-    <%= error_tag f, :style_id %>
-  </div>
+  <div class="container">
+    <div class="box">
+      <h2 class="title is-4">Batch</h2>
+      <div class="field">
+        <%= label f, :style, class: "label" %>
+        <div class="control">
+          <div class="select">
+            <%= select f, :style_id, Enum.map(@styles, &{&1.name, &1.id}), prompt: "Choose the beer style" %>
+          </div>
+        </div>
+        <%= error_tag f, :style_id %>
+      </div>
 
-  <div class="mb-4">
-    <%= label f, :date, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= text_input f, :date, type: :date, class: "block appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
-    <%= error_tag f, :date %>
-  </div>
+      <div class="field">
+        <%= label f, :date, class: "label" %>
+        <div class="control">
+          <%= text_input f, :date, type: :date, class: "input" %>
+        </div>
+        <%= error_tag f, :date %>
+      </div>
 
-  <div class="mb-4">
-    <%= label f, :notes, class: "block text-gray-700 text-sm font-bold mb-2"%>
-    <%= textarea f, :notes, class: "block appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-    <%= error_tag f, :notes %>
-  </div>
+      <div class="field">
+        <%= label f, :notes, class: "label"%>
+        <div class="control">
+          <%= textarea f, :notes, class: "textarea" %>
+        </div>
+        <%= error_tag f, :notes %>
+      </div>
 
-  <div class="mb-4">
-    <%= label f, :original_gravity, class: "block text-gray-700 text-sm font-bold mb-2"%>
-    <%= text_input f, :original_gravity, type: :number, class: "block appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
-    <%= error_tag f, :original_gravity %>
-  </div>
+      <div class="field">
+        <%= label f, :original_gravity, class: "label"%>
+        <div class="control">
+          <%= text_input f, :original_gravity, type: :number, class: "input" %>
+        </div>
+        <%= error_tag f, :original_gravity %>
+      </div>
 
-  <div class="mb-4">
-    <%= label f, :final_gravity, class: "block text-gray-700 text-sm font-bold mb-2"%>
-    <%= text_input f, :final_gravity, type: :number, class: "block appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
-    <%= error_tag f, :final_gravity %>
-  </div>
+      <div class="field">
+        <%= label f, :final_gravity, class: "label" %>
+        <div class="control">
+          <%= text_input f, :final_gravity, type: :number, class: "input" %>
+        </div>
+        <%= error_tag f, :final_gravity %>
+      </div>
 
-  <%= submit "Save", phx_disable_with: "Saving batch...", class: "bg-yellow-500 hover:bg-yellow-700 text-yellow-900 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+      <%= submit "Save", phx_disable_with: "Saving batch...", class: "button is-primary" %>
+    </div>
+  </div>
 </form>
