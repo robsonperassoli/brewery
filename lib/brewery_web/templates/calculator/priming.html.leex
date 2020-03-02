@@ -27,17 +27,25 @@
     </div>
 
     <%= if @results do %>
-      <p>
-          Add <strong><%= @results.total_sugar %></strong> grams of sugar and 
-          complete with water until you have <strong><%= @results.priming_solution %></strong>
-          ml of solution.
-      </p>
+      <div class="content">
+        <p>
+            Add <strong><%= @results.total_sugar %></strong> grams of sugar and 
+            complete with water until you have <strong><%= @results.priming_solution %></strong>
+            ml of solution.
+        </p>
 
-      <p>
-          Pour <strong><%= @results.solution_per_bottle %></strong> ml of solution
-          each bottle, which is a total of <strong><%= @results.sugar_per_bottle %></strong>
-          grams of sugar per bottle.
-      </p>
+        <p>
+            Pour <strong><%= @results.solution_per_bottle %></strong> ml of solution
+            each bottle, which is a total of <strong><%= @results.sugar_per_bottle %></strong>
+            grams of sugar per bottle.
+        </p>
+        <p>Of the same priming solution you can use the following ammounts:</p>
+        <ul>
+          <%= for variant <- @results.bottle_variants do %>
+            <li><strong><%= variant.solution %></strong>ml of solution for <strong><%= variant.size %></strong>ml bottle.</li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
   </div>
 </form>
