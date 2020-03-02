@@ -10,7 +10,7 @@
   </head>
   <body>
     <header>
-      <%= render "nav.html" %>
+      <%= render "nav.html", conn: @conn %>
     </header>
     <main class="container is-fluid">
       <%= if get_flash(@conn, :info) do %>

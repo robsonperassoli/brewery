@@ -1,8 +1,7 @@
-<%= #Routes.current_path() %>
-<nav class="navbar">
+<nav class="navbar is-warning">
   <div class="navbar-brand">
     <span class="navbar-item">
-      <span class="icon has-text-warning is-medium">
+      <span class="icon is-medium">
         <i class="fas fa-beer fa-lg"></i>
       </span>
       <h1 class="title is-5">Brewery</h1>
@@ -11,13 +10,12 @@
 
   <div class="navbar-menu">
     <div class="navbar-start">
-      <%= link "Batches", to: "/batches", class: "navbar-item" %>
-      <%= link "Styles", to: "/styles", class: "navbar-item" %>
-      <div class="navbar-item has-dropdown is-hoverable">
+      <%= link "Batches", to: "/batches", class: "navbar-item #{nav_active_class(@conn, "/batches")}" %>
+      <%= link "Styles", to: "/styles", class: "navbar-item #{nav_active_class(@conn, "/styles")}" %>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">Calculators</a>
-        <div class="navbar-dropdown">
-          <%= link "Priming", to: "/calculator/priming", class: "navbar-item" %>
+        <div class="navbar-dropdown is-boxed">
+          <%= link "Priming", to: "/calculator/priming", class: "navbar-item #{nav_active_class(@conn, "/calculator/priming")}" %>
         </div>
       </div>
     </div>
