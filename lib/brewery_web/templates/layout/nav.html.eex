@@ -1,7 +1,12 @@
 <%= #Routes.current_path() %>
 <nav class="navbar">
   <div class="navbar-brand">
-    <h1 class="subtitle">Brewery</h1>
+    <span class="navbar-item">
+      <span class="icon has-text-warning is-medium">
+        <i class="fas fa-beer fa-lg"></i>
+      </span>
+      <h1 class="title is-5">Brewery</h1>
+    </span>
   </div>
 
   <div class="navbar-menu">
