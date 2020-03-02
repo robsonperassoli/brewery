@@ -20,7 +20,7 @@ defmodule Brewery.Production.Batch do
   def changeset(batch, attrs) do
     batch
     |> cast(attrs, [:date, :notes, :original_gravity, :final_gravity, :style_id])
-    |> validate_required([:date, :notes, :original_gravity, :final_gravity, :style_id])
+    |> validate_required([:date, :notes, :style_id])
     |> foreign_key_constraint(:style_id)
   end
 end
