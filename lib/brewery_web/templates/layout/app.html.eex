@@ -8,15 +8,20 @@
     <%= csrf_meta_tag() %>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
-  <body class="body">
+  <body>
     <header>
       <%= render "nav.html" %>
     </header>
-    <main class="p-5">
-      <p class="my-4 text-blue-900" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="my-4 text-red-900" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= render @view_module, @view_template, assigns %>
+    <main class="container is-fluid">
+      <%= if get_flash(@conn, :info) do %>
+        <p class="notification is-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <% end %>
+      <%= if get_flash(@conn, :error) do %>
+        <p class="notification is-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <% end %>
     </main>
+
+    <%= render @view_module, @view_template, assigns %>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

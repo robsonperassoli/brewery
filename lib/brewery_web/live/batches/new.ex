@@ -30,7 +30,7 @@ defmodule BreweryWeb.BatchesLive.New do
         {:stop, 
           socket
           |> put_flash(:info, "Batch saved sucessfully!")
-          |> redirect(to: Routes.live_path(socket, BatchesLive.Show, batch))}
+          |> redirect(to: Routes.live_path(socket, BatchesLive.Edit, batch))}
       {:error, changeset} ->
         {:noreply, assign(socket, changeset: changeset)}
     end

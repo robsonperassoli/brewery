@@ -27,7 +27,7 @@ defmodule BreweryWeb.StylesLive.New do
         {:stop,
          socket
          |> put_flash(:info, "Style created successfully!")
-         |> redirect(to: Routes.live_path(socket, StylesLive.Show, beer_style))}
+         |> redirect(to: Routes.live_path(socket, StylesLive.List))}
       {:error, changeset} ->
         {:noreply, assign(socket, changeset: changeset)}
     end
