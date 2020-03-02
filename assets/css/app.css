@@ -1,4 +1,4 @@
 /* This file is for your main application css. */
 @import "../../deps/phoenix_live_view/assets/css/live_view.css";
-@import "../node_modules/bulma/css/bulma.css"
-
+@import "../node_modules/bulma/css/bulma.css";
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";

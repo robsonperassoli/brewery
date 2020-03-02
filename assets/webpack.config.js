@@ -31,6 +31,26 @@ module.exports = (env, options) => ({
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /\.(ttf|eot|svg|otf)(\?v=[0-9]\.[0-9]\.[0-9])?$/i,
+        loader: 'file-loader',
+        options: { outputPath: '../images' }
+      },
+      {
+        test: /\.(png|gif|jpg|cur)$/i,
+        loader: 'url-loader',
+        options: { limit: 8192, outputPath: '../images' }
+      },
+      {
+        test: /\.woff2(\?v=[0-9]\.[0-9]\.[0-9])?$/i,
+        loader: 'url-loader',
+        options: { limit: 10000, mimetype: 'application/font-woff2', outputPath: '../fonts' }
+      },
+      {
+        test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/i,
+        loader: 'url-loader',
+       options: { limit: 10000, mimetype: 'application/font-woff', outputPath: '../fonts' }
       }
     ]
   },
