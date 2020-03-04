@@ -16,6 +16,11 @@ defmodule Brewery.Production.Batch do
     timestamps()
   end
 
+  def abv(original_gravity, final_gravity) do 
+    abv = ((original_gravity - final_gravity) * 131.25) / 1000
+    Float.round(abv, 1)
+  end
+
   @doc false
   def changeset(batch, attrs) do
     batch

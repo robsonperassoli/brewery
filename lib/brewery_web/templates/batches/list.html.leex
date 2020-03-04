@@ -6,6 +6,7 @@
       <th>Date</th>
       <th>OG</th>
       <th>FG</th>
+      <th>ABV</th>
       <th>#</th>
     </tr>
   </thead>
@@ -16,6 +17,9 @@
         <td><%= batch.date %></td>
         <td><%= batch.original_gravity %></td>
         <td><%= batch.final_gravity %></td>
+        <td>
+          <%= abv(batch) %>
+        </td>
         <td>
           <%= link "Edit", to: Routes.live_path(@socket, BreweryWeb.BatchesLive.Edit, batch) %> | 
           <%= link "Steps", to: Routes.live_path(@socket, BreweryWeb.BatchesLive.Steps, batch) %>
